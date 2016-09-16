@@ -4,7 +4,15 @@
   "description": "Todo app which uses Firebase + React + Redux ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "cross-env NODE_ENV=production webpack --display-chunks --progress",
+    "clean": "del-cli ./target",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --progress",
+    "lint": "eslint -c .eslintrc.yml *.js ./src ./server",
+    "prebuild": "npm-run-all clean lint test",
+    "server": "cross-env NODE_ENV=development nodemon -w 'server/**/*.*' ./server/main.js",
+    "start": "npm run dev",
+    "test": "cross-env NODE_ENV=test karma start --single-run",
+    "test:watch": "cross-env NODE_ENV=test karma start"
   },
   "author": "Necmettin Karakaya",
   "license": "ISC",
