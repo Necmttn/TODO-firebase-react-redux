@@ -46,3 +46,20 @@ config.plugins = [
     'process.env.NODE_ENV': JSON.stringify(NODE_ENV)
   })
 ];
+
+config.postcss = [
+  autoprefixer({ browsers: ['last 3 versions'] })
+];
+
+config.sassLoader = {
+  outputStyle: 'compressed',
+  precision: 10,
+  sourceComments: false
+};
+
+// =======
+// Development or production
+// -------
+
+
+// later on i will fixed in here. 
